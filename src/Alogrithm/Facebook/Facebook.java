@@ -1084,7 +1084,10 @@ public class Facebook {
 //      List<Interval> l2 = new LinkedList<>(Arrays.asList(i4,i5,i6));
 //      facebook.mergeTwoIntervalwithOverlap(l1,l2);
 
-        System.out.println(subset(new int[]{2,3,4}));
+       Queue<Integer> queue = new LinkedList<>();
+       queue.add(2);
+       queue.add(3);
+        System.out.println(queue.peek());
 
 
 
