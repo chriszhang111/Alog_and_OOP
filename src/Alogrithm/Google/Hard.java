@@ -28,7 +28,6 @@ public class Hard {
 
             return ans;
         }
-    }
 
     class Worker implements Comparable<Worker> {
         public int quality, wage;
@@ -44,5 +43,37 @@ public class Hard {
         public int compareTo(Worker other) {
             return Double.compare(ratio(), other.ratio());
         }
+        }
 
-}
+
+        // 132
+    public int minCut(String s) {
+        int[] cut = new int[s.length()];
+        char[] c = s.toCharArray();
+        boolean[][] dp = new boolean[s.length()][s.length()];
+
+        for(int i=0;i<s.length();i++){
+            int min = i;    // given a string, the maxium cut is the number of current length-1  abc-> a b c
+            for(int j=i;j>=0;j--){
+                if(c[j]==c[i] && (j+1>i-1 || dp[i-1][j+1])){
+                    min = Math.min(min,j==0?0:cut[j-1]+1);
+                    dp[i][j] = true;
+                    }
+            }
+            cut[i] = min;
+        }
+        return cut[s.length()-1];
+        }
+
+
+    public static void main(String[] args){
+
+            Hard h = new Hard();
+            h.minCut("aab");
+
+    }
+
+
+    }
+
+
